@@ -27,9 +27,9 @@ int main (int argc, char** argv)
 	// const size_t size = val;
 	constexpr size_t size = 10;
 
-	// int arr[size]{1,2,3,4,5,6};
+	int arr[size]{1,2,3,4,5,6};
 	
-	int arr[getValue(4)]{1,2,3,4,5,6}; //variable length array
+	// int arr[getValue(4)]{1,2,3,4,5,6}; //variable length array
 
 	for (int i=0; i<size; i++)
 		cout <<arr[i]<<", ";
