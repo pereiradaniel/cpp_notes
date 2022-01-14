@@ -2,7 +2,8 @@
 #include <cstdlib>
 #include "utils.h"
 using namespace std;
-int main (int argc, char** argv) {
+int main (int argc, char** argv)
+{
 
 	for (auto i = 0; i < argc; i++)
 		std::cout << i << ". " << argv[i] << endl;
