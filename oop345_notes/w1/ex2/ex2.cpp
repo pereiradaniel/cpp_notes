@@ -13,6 +13,7 @@ int main (int argc, char** argv) {
 	sayHi();
 	g_data = 12345;
 	sayHi();
+	cout << "In main: " << g_data << endl;
 
     return 0;
 }
