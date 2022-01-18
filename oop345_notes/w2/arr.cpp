@@ -6,6 +6,13 @@ int main()
     
     int* pArr = arr; // arr is address of frist address of the array!
 
+    // Why use static cast?
+    // const_cast used to remove const
+    // static_cast used between compatible types
+    // dynamic_cast used between types on the same hierarchy with ploymorphism enabled
+    // reinterpret_cast used between types that have the same size
+    int* pArrInt = static_cast<int*>(pArr);
+
     // pArr could not be used in the for each loop...
     // Range form can not be used for pointers! Only statically allocated array.
 
