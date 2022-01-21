@@ -12,8 +12,39 @@ class Numbers
 public:
     // custom implementation of copy operation
     // what is prototype of copy constructor?
-    Numbers(const Numbers&); // Do not forget const!
+    Numbers(const Numbers& other){ // Do not forget const! 
+        // Inline implementation
+        cout << "Copy C: " << this << " from " << &other << endl;
+        *this = other; // call the copy assignment
+    }
+    // prototype for copy assignment operator
+    Numbers& operator=(const Numbers& other)
+    {
+        cout << "Copy =: " << this << " from " << &other << endl;
+        // two objects are the same if they have the same address!
+        // 1. Check for self-assignment
+        if (&other != this) { // compare two addresses:
+            // different objects; start to copy
+            // 2. Shallow copy (copy everything that is not a resource)
+            this->m_size = other.m_size;
 
+            // 3. Clean-up (delete the resource from it's current instance)
+            delete[] this->m_resource;
+
+            // 4. Deep copy
+            this->m_resource = new short[this->m_size];
+            for (auto i = 0u; i < this->m_size; ++i) // m_size is unsigned
+            {
+                this->m_resource[i] = other.m_resource[i];
+            }
+        }
+        return *this;
+    }
+    ~Numbers()
+    {
+        
+        cout << " ~Numbers(): " << this << " Resource[" << this->m_resource << "]\n";
+    }
 };
 
 int main()
