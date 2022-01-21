@@ -10,6 +10,14 @@ class Numbers
     // A method to determine the size of the dynamically created array is required!
     size_t m_size{}; // Do not leave this uninitialized! nullptr
 public:
+    Numbers(size_t initialSize) : m_size{initialSize}
+    {
+        cout << "Cust C: " << this << " with size " << initialSize << endl;
+        // this->m_size = initialSize;
+        this->m_resource = new short[this->m_size];
+        for (auto i=0u; i<m_size; ++i)
+            this->m_resource[i] = i*2;
+    }
     // custom implementation of copy operation
     // what is prototype of copy constructor?
     Numbers(const Numbers& other){ // Do not forget const! 
@@ -42,13 +50,15 @@ public:
     }
     ~Numbers()
     {
-        
+
         cout << " ~Numbers(): " << this << " Resource[" << this->m_resource << "]\n";
+        delete[] this->m_resource; // ?????
     }
 };
 
 int main()
 {
+    Numbers f(5);
     // TODO: Rule of 5
     // TODO: Enumerations
 
