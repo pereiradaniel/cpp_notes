@@ -49,6 +49,41 @@ public:
         return *this;
     }
 
+    // MOVE OPERATIONS
+    // rvalue references are called move references
+
+    // Move constructor
+    Numbers(Numbers&& other) noexcept // use of rvalue is how we identify a dying object
+    {
+        cout << "Move =: " << this << " from " << &other << endl;
+        this->m_resource = nullptr;
+        *this = std::move(other); // move assignment
+
+        // cout << "Move C: " << this << " from " << &other << endl;
+        // // this->m_resource = nullptr; // not sure, so make sure it is null
+        // *this = other; // copy  assignment
+    }
+
+    // Move assignment (returns an lvalue reference of type Numbers)
+    Numbers& operator=(Numbers&& other) noexcept
+    {
+        cout << "Move =: " << this << " from " << &other << endl;
+        // 1. Check for self assignment
+        if (this != &other)
+        {
+            // 2. Shallow copy
+            this->m_size = other.m_size;
+
+            // 3. clean-up
+            delete[] this->m_resource;
+
+            // 4. Move the resource
+            this->m_resource = other.m_resource;
+            other.m_resource = nullptr;
+        }
+        return *this;
+    }
+
     ~Numbers()
     {
 
