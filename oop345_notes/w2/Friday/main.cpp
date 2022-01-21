@@ -48,18 +48,41 @@ public:
         }
         return *this;
     }
+
     ~Numbers()
     {
 
         cout << " ~Numbers(): " << this << " Resource[" << this->m_resource << "]\n";
         delete[] this->m_resource; // ?????
     }
+
+    // reverse number sign
+    Numbers transform()
+    {
+        Numbers tmp = *this; // copy 
+        for (auto i=0; i< tmp.m_size; ++i)
+            tmp.m_resource[i] *= -1; // flip sign
+        
+        return tmp;
+    }
+
+    void display()
+    {
+        for (auto i =0u; i < this->m_size; ++i)
+            cout << this->m_resource[i] << ", ";
+        cout << endl;
+    }
 };
+
 
 int main()
 {
     Numbers f(5);
-    f = Numbers(2); // copy assignment
+    //f = Numbers(2); // copy assignment
+    // Numbers f2(f);
+    Numbers f2 = f.transform();
+    f.display();
+    f2.display();
     // TODO: Rule of 5
     // TODO: Enumerations
 
