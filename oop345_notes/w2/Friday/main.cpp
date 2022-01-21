@@ -59,6 +59,7 @@ public:
 int main()
 {
     Numbers f(5);
+    f = Numbers(2); // copy assignment
     // TODO: Rule of 5
     // TODO: Enumerations
 
