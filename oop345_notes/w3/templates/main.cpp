@@ -3,20 +3,37 @@
 #include <typeinfo>
 using namespace std;
 
-template<typename T>
-void print(T val)
+class Number
 {
+    int val = 123;
+public:
+    Number() = default;
+    int size() const {return 100;}
+    friend ostream& operator<<(ostream& out,const Number& num);
+    Number(const Number&) = delete; // Don't add this operation!
+};
+
+ostream& operator<<(ostream& out, const Number& num)
+{
+    out << num.val;
+    return out;
+}
+
+template<typename T>
+void print(const T& val)
+{
+    // assumes that T has size() function
+    // that << works
+
+    cout << val.size() << endl;
     cout << "int -> "<<val<<endl;
 }
 
-void print(std::string val)
-{
-    cout << "std::string -> "<<val<<endl;
-};
-
 int main()
 {
-    print(19);
-    print("Hello");
-    print(std::string("Hi"));
+    Number theNum;
+    print(theNum);
+    // print(19);
+    // print("Hello");
+    // print(std::string("Hi"));
 }
