@@ -18,5 +18,5 @@ int main()
 {
     print(19);
     print("Hello");
-
+    print(std::string("Hi"));
 }
