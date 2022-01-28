@@ -24,12 +24,12 @@ ostream& operator<<(ostream& out, const Number& num)
 
 int main()
 {
-    Foo<int> theFoo_int;
-    theFoo_int.display();
+    Foo<int> theFoo_int[5];
+    theFoo_int[0].display();
 
     Foo<double> theFoo_double;
     theFoo_double.display();
 
-    Foo<Number> theFoo_number;
-    theFoo_number.display();
+    Foo<Number> theFoo_number[3];
+    theFoo_number[0].display();
 }
