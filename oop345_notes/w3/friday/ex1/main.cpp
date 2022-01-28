@@ -26,4 +26,10 @@ int main()
 {
     Foo<int> theFoo_int;
     theFoo_int.display();
+
+    Foo<double> theFoo_double;
+    theFoo_double.display();
+
+    Foo<Number> theFoo_number;
+    theFoo_number.display();
 }

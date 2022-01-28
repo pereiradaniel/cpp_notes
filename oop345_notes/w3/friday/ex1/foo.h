@@ -25,7 +25,10 @@ namespace lectures
     template <typename T>
     void Foo<T>::display() const
     {
-        cout << setw(20) << typeid(*this).name() << "    ";
+        // add colours: console command, not cpp
+        // std::cout << "\33[38;2;0;255;0m]";
+        std::cout << setw(40) << typeid(*this).name() << "    ";
+        // std::cout << "\33[0m]";
         std::cout << this->m_value << std::endl;
     }
 }
