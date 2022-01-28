@@ -20,7 +20,7 @@ namespace lectures
 
     // static members are defined differently
     template<typename T>
-    size_t Foo<T>::m_cnt = 0;
+    size_t Foo<T>::m_cnt = 0u;
 
     template<typename T>
     Foo<T>::Foo() : m_value{}

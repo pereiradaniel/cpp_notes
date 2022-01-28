@@ -32,4 +32,7 @@ int main()
 
     Foo<Number> theFoo_number[3];
     theFoo_number[0].display();
+
+    Foo<int> theFoo_intAnother;
+    theFoo_intAnother.display();
 }
