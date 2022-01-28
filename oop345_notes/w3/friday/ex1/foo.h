@@ -16,6 +16,8 @@ namespace lectures
     public:
         void display() const;
         Foo();
+        // disable constructor
+        Foo(const Foo<T>&) = delete; // no longer creates instances that are not counted by m_cnt
     };
 
     // static members are defined differently
