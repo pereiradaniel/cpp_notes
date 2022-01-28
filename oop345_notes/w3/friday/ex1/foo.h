@@ -22,11 +22,23 @@ namespace lectures
     template<typename T>
     size_t Foo<T>::m_cnt = 0u;
 
+    // Specialization of the counter for Foo<double>
+    // Works with double, not type T
+    // Still templated class, needs header but nothing in it
+    template<>
+    size_t Foo<double>::m_cnt = 100u;
+
     template<typename T>
     Foo<T>::Foo() : m_value{}
     {
         // m_value =0;
         ++Foo<T>::m_cnt;
+    }
+
+    template<>
+    Foo<double>::Foo() : m_value {1.24}
+    {
+        --Foo<double>::m_cnt;
     }
 
     // templated, need to specify template params
