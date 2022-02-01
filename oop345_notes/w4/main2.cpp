@@ -21,4 +21,9 @@ int main()
         cout << item << ", ";
     }
     cout << endl;
+
+     // TODO: casting operators (review)
+     //         declytype (use it to reveal value categories of expressions)
+     //         dangers of working close to the range edges.
+     //         bring up other things.
 }
