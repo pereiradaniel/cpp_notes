@@ -19,9 +19,9 @@ bool asc(int a, int b)
 bool oddEven(int a, int b)
 {
     // all even numbers are considered smaller than odd numbers
-    return a > b;
     if ((a%2==1||a%2==-1)&&b%2==0)
-        return b<a;//
+        return true;//
+    return false;
 }
 
 void bubbleSort(int arr[], size_t size)
