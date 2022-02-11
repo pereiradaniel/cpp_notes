@@ -23,6 +23,22 @@ bool oddEven(int a, int b)
         return true;//
     return false;
 }
+// use a function object when needing to maintain a state
+
+// functor, function object
+class Comparator
+{
+    int m_usageCount{}; // counts how many times the operator() has been used
+    // overloading() operator means this class is a functor!
+    public:
+    bool operator()(int a, int b)
+    {
+        ++m_usageCount;
+        return a < b; // sort descending
+    }; // overload operator
+
+    void display() const {cout<< "Made [" << m_usageCount << "] comparisons.\n"; }
+};
 
 // bool (*compare(int, int)) // this is a callback function!
 // void bubbleSort(int arr[], size_t size, bool (*compare)(int, int))
@@ -31,8 +47,9 @@ bool oddEven(int a, int b)
 template<typename Comp>
 void bubbleSort(int arr[], size_t size, Comp& compare)
 {
+    // cout << typeid(compare);
     for (size_t i = 0; i < size - 1; ++i)
-        for (size_t j = 0; i < size; ++j)
+        for (size_t j = i+1; j < size; ++j)
             if (compare(arr[i], arr[j])) // should the numbers be switched?
             {
                 int tmp = arr[i];
@@ -40,18 +57,6 @@ void bubbleSort(int arr[], size_t size, Comp& compare)
                 arr[j] = tmp;
             }
 }
-
-
-// functor, function object
-class Comparator
-{
-    // overloading() operator means this class is a functor!
-    public:
-    bool operator()(int a, int b) const
-    {
-        return a < b; // sort descending
-    }; // overload operator
-};
 
 int main()
 {
@@ -75,4 +80,6 @@ int main()
     
     bubbleSort(arr, sizeof(arr) / sizeof(arr[0]), comp_fo);
     display(arr, sizeof(arr) / sizeof(arr[0]));
+
+    comp_fo.display();
 }
