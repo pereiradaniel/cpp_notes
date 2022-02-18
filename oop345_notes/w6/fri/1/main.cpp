@@ -37,4 +37,7 @@ int main()
     f1("C++");
     f2("C++ with lambda");
     f3("C++ with function object.");
+
+    // for workshop 5
+    //std::function<???> errorReport;
 }
